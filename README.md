@@ -2,19 +2,19 @@
 
 DzulFood merupakan sebuah aplikasi yang dapat digunakan untuk pemesanan minuman dan makanan pada caffe, restoran, rumah makan atau yang sejenisnya.
 
-## Pemilik/Admin
+## Pemilik/Admin (1)
 
     - Melihat laporan
     - Menambah/mengubah/menghapus daftar menu dan harga
     - Menambah/mengubah/menghapus user
 
-## Kasir
+## Kasir (2)
 
     - Melihat harga dan total harga pesanan
     - Konfirmasi pembayaran
     - Membuat bukti pembayaran
 
-## Pelayan
+## Pelayan (3)
 
     - Melihat menu dan harga
     - Melihat total harga pesanan
@@ -22,15 +22,30 @@ DzulFood merupakan sebuah aplikasi yang dapat digunakan untuk pemesanan minuman 
     - Update pesanan
     - Hapus pesanan
 
-## Dapur
+## Dapur (4)
 
     - Menerima Pesanan
     - Konfirmasi terima pesanan
     - Mengubah status pesanan
 
-## MENU
+## Menu Level Hak Akses
 
-- HOME
-- ORDER
-- PRODUCT
-- REPORT
+## Pemilik/Admin (1)
+
+    - Report
+    - Daftar Menu
+    - User
+
+## Kasir (2)
+
+    - Daftar Menu //Read
+    - Pesanan
+
+## Pelayan (3)
+
+    - Daftar Menu
+    - Pesanan
+
+## Dapur (4)
+
+    - Pesanan
