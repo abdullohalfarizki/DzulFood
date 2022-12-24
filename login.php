@@ -75,19 +75,19 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" novalidate action="proses/proses_login.php" method="POST">
             <i class="bi bi-circle-square fs-1"></i>
             <h1 class="h3 mb-3 fw-normal">Silahkan Login</h1>
 
             <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+                <input name="username" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
                 <label for="floatingInput">Email address</label>
                 <div class="invalid-feedback">
                     Masukan Email yang valid.
                 </div>
             </div>
             <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
                 <div class="invalid-feedback">
                     Masukan Password yang valid.
@@ -99,7 +99,7 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit_validate" value="abc">Login</button>
             <p class="mt-5 mb-3 text-muted">&copy;DzulFood 2022-2023</p>
         </form>
     </main>
