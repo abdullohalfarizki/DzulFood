@@ -3,6 +3,9 @@
 if (isset($_GET['x']) && $_GET['x'] == 'home') {
     $page = "home.php";
     include "main.php";
+} else if (isset($_GET['x']) && $_GET['x'] == 'menu') {
+    $page = "menu.php";
+    include "main.php";
 } else if (isset($_GET['x']) && $_GET['x'] == 'order') {
     $page = "order.php";
     include "main.php";

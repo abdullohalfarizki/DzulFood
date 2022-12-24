@@ -15,6 +15,9 @@
                             <a class="nav-link <?php echo ((isset($_GET['x']) && $_GET['x'] == 'home') || !isset($_GET['x'])) ? 'active link-light bg-info'  : 'link-dark'; ?>  ps-2" aria-current="page" href="home"><i class="bi bi-houses"></i> Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'menu') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="menu"><i class="bi bi-cart-check"></i> Daftar Menu</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'order') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="order"><i class="bi bi-cart-check"></i> Order</a>
                         </li>
                         <li class="nav-item">

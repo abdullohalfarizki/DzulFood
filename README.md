@@ -32,9 +32,10 @@ DzulFood merupakan sebuah aplikasi yang dapat digunakan untuk pemesanan minuman 
 
 ## Pemilik/Admin (1)
 
-    - Report
     - Daftar Menu
+    - Pesanan
     - User
+    - Report
 
 ## Kasir (2)
 
