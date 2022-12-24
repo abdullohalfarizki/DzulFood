@@ -25,19 +25,8 @@
 
             <?php
 
-            if (isset($_GET['x']) && $_GET['x'] == 'home') {
-                include "home.php";
-            } else if (isset($_GET['x']) && $_GET['x'] == 'order') {
-                include "order.php";
-            } else if (isset($_GET['x']) && $_GET['x'] == 'product') {
-                include "product.php";
-            } else if (isset($_GET['x']) && $_GET['x'] == 'customer') {
-                include "customer.php";
-            } else if (isset($_GET['x']) && $_GET['x'] == 'report') {
-                include "report.php";
-            } else {
-                include "home.php";
-            }
+            include $page;
+
             ?>
 
             <!-- End Content -->
