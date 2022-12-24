@@ -12,7 +12,7 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav nav-pills  flex-column justify-content-end flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'home') ? 'active link-light bg-info'  : 'link-dark'; ?>  ps-2" aria-current="page" href="home"><i class="bi bi-houses"></i> Home</a>
+                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'home' || $_GET['x'] == '') ? 'active link-light bg-info'  : 'link-dark'; ?>  ps-2" aria-current="page" href="home"><i class="bi bi-houses"></i> Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'order') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="order"><i class="bi bi-cart-check"></i> Order</a>

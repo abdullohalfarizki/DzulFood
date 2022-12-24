@@ -35,8 +35,9 @@
                 include "customer.php";
             } else if (isset($_GET['x']) && $_GET['x'] == 'report') {
                 include "report.php";
+            } else {
+                include "home.php";
             }
-
             ?>
 
             <!-- End Content -->
