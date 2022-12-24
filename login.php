@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!empty($_SESSION['username_dzulfood'])) {
+    header("location: home");
+}
+?>
+
 <!doctype html>
 <html lang="en">
 

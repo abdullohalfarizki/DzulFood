@@ -17,6 +17,8 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
     include "main.php";
 } else if (isset($_GET['x']) && $_GET['x'] == 'login') {
     include "login.php";
+} else if (isset($_GET['x']) && $_GET['x'] == 'logout') {
+    include "proses/proses_logout.php";
 } else {
     include "main.php";
 }
