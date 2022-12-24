@@ -99,7 +99,7 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit_validate" value="abc">Login</button>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" name="submit_validate" value="submit_validate">Login</button>
             <p class="mt-5 mb-3 text-muted">&copy;DzulFood 2022-2023</p>
         </form>
     </main>
