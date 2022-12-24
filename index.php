@@ -9,8 +9,8 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
 } else if (isset($_GET['x']) && $_GET['x'] == 'order') {
     $page = "order.php";
     include "main.php";
-} else if (isset($_GET['x']) && $_GET['x'] == 'product') {
-    $page = "product.php";
+} else if (isset($_GET['x']) && $_GET['x'] == 'user') {
+    $page = "user.php";
     include "main.php";
 } else if (isset($_GET['x']) && $_GET['x'] == 'customer') {
     $page = "customer.php";
