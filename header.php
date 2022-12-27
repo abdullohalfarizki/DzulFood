@@ -5,7 +5,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Username
+                        <?php echo $hasil['nama']; ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end mt-2">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill"></i> Profile</a></li>

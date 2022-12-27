@@ -23,5 +23,6 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
 } else if (isset($_GET['x']) && $_GET['x'] == 'logout') {
     include "proses/proses_logout.php";
 } else {
+    $page = "home.php";
     include "main.php";
 }

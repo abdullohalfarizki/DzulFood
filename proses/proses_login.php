@@ -15,7 +15,8 @@ if (!empty($_POST['submit_validate'])) {
         //dibuatkan session dengan nama username_dzulfood
 
         $_SESSION['username_dzulfood'] = $username;
-        header("location: login");
+
+        // header("location: login");
         header('Location:../home');
     } else { ?>
         <script>
