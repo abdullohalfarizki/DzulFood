@@ -238,11 +238,17 @@ while ($record = mysqli_fetch_array($query)) {
                                 <form class="needs-validation" novalidate action="proses/proses_hapus_user.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                                     <div class="col lg-12 text-center mb-3">
-                                        Apakah anda yakin ingin menghapus data <b><?php echo $row['username']; ?></b>
+                                        <?php
+                                        if ($row['username'] == $_SESSION['username_dzulfood']) {
+                                            echo '<div class="alert alert-danger">Anda tidak dapat menghapus akun sendiri</div>';
+                                        } else {
+                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
+                                        }
+                                        ?>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" name="input_hapus_validate" value="12345" class="btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" name="input_hapus_validate" value="12345" class="btn btn-danger btn-sm" <?php echo ($row['username'] == $_SESSION['username_dzulfood']) ? 'disabled' : ''; ?>>Hapus</button>
                                     </div>
                                 </form>
                             </div>
