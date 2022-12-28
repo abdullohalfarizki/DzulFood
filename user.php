@@ -160,7 +160,7 @@ while ($record = mysqli_fetch_array($query)) {
                     <div class="modal-dialog modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-eye"></i> Edit Data User </h1>
+                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-pencil-square"></i> Edit Data User </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -226,6 +226,30 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                 </div>
                 <!-- Akhir Modal Edit-->
+                <!-- Modal Hapus -->
+                <div class="modal fade" id="ModalHapus<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen-md-down">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-trash"></i> Hapus Data User </h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="needs-validation" novalidate action="proses/proses_hapus_user.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <div class="col lg-12 text-center mb-3">
+                                        Apakah anda yakin ingin menghapus data <b><?php echo $row['username']; ?></b>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" name="input_hapus_validate" value="12345" class="btn btn-danger btn-sm">Hapus</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Akhir Modal Hapus-->
             <?php
             }
             if (empty($result)) {
@@ -268,7 +292,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id']; ?>"><i class="bi bi-eye"></i></button>
                                         <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id']; ?>"><i class="bi bi-pencil-square"></i></button>
-                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id']; ?>"><i class="bi bi-trash"></i></button>
                                     </td>
                                 </tr>
                             <?php } ?>
