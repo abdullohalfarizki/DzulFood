@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 if (empty($_SESSION['username_dzulfood'])) {
     header("location: login");
 }

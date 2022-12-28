@@ -15,6 +15,7 @@ if (!empty($_POST['submit_validate'])) {
         //dibuatkan session dengan nama username_dzulfood
 
         $_SESSION['username_dzulfood'] = $username;
+        $_SESSION['level_dzulfood'] = $hasil['level'];
 
         // header("location: login");
         header('Location:../home');
