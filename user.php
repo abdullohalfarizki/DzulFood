@@ -6,7 +6,7 @@ while ($record = mysqli_fetch_array($query)) {
 }
 ?>
 
-<div class="col-lg-9 mt-2">
+<div class="col-lg-9 mt-1">
     <div class="card">
         <div class="card-header">
             Data User
@@ -17,25 +17,71 @@ while ($record = mysqli_fetch_array($query)) {
                     <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"><i class="bi bi-plus-lg"></i> Tambah</a>
                 </div>
             </div>
-            <!-- Modal Tambah Data -->
+            <!-- Modal Tambah Data User-->
             <div class="modal fade" id="ModalTambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus"></i> Tambah User </h1>
+                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-plus"></i> Tambah User </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="nama" id="floatingInput" placeholder="Your Name" required>
+                                    <label for="floatingInput">Nama</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Nama!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" required>
+                                    <label for="floatingInput">Username</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Username!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" name="level" aria-label="Default select example" required>
+                                        <option selected hidden>Pilih level user</option>
+                                        <option value="1">Owner/Admin</option>
+                                        <option value="2">Kasir</option>
+                                        <option value="3">Pelayan</option>
+                                        <option value="3">Dapur</option>
+                                    </select>
+                                    <label for="floatingInput">Level</label>
+                                    <div class="invalid-feedback">
+                                        Pilih Level User!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="12345">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="082122223333" required>
+                                    <label for="floatingInput">No Telp</label>
+                                    <div class="invalid-feedback">
+                                        Masukan No Telpon!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" name="alamat" id="floatingInput" cols="30" rows="10" style="height: 90px;" required></textarea>
+                                    <label for="floatingInput">Alamat</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Alamat!
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="input_user_validate" value="12345" class="btn btn-primary btn-sm">Save changes</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Akhir Modal Tambah Data -->
+            <!-- Akhir Modal Tambah Data User -->
 
             <!-- Modal View -->
             <div class="modal fade" id="ModalView" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -99,3 +145,27 @@ while ($record = mysqli_fetch_array($query)) {
         </div>
     </div>
 </div>
+
+
+<!-- Alert Js -->
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
