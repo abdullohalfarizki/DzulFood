@@ -2,6 +2,7 @@
 
 include "connect.php";
 
+//menambahkan data user ke database
 $nama = (isset($_POST['nama'])) ? htmlentities($_POST['nama']) : "";
 $username = (isset($_POST['username'])) ? htmlentities($_POST['username']) : "";
 $password = (isset($_POST['password'])) ? md5(htmlentities($_POST['password']))  : "";
