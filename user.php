@@ -13,7 +13,7 @@ while ($record = mysqli_fetch_array($query)) {
         </div>
         <div class="card-body">
             <div class="row mb-2">
-                <div class="col d-flex justify-content-start">
+                <div class="col d-flex justify-content-end me-2">
                     <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"><i class="bi bi-plus-lg"></i> Tambah</a>
                 </div>
             </div>
@@ -91,7 +91,7 @@ while ($record = mysqli_fetch_array($query)) {
                     <div class="modal-dialog modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-eye"></i> Data User </h1>
+                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-eye"></i> Detail Data User </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -180,7 +180,17 @@ while ($record = mysqli_fetch_array($query)) {
                                     <th scope="row"><?php echo $no++; ?></th>
                                     <td><?php echo $row['nama']; ?></td>
                                     <td><?php echo $row['username']; ?></td>
-                                    <td><?php echo $row['level']; ?></td>
+                                    <td>
+                                        <?php if ($row['level'] == 1) {
+                                            echo "Admin";
+                                        } elseif ($row['level'] == 2) {
+                                            echo "Kasir";
+                                        } elseif ($row['level'] == 3) {
+                                            echo "Pelayan";
+                                        } elseif ($row['level'] == 4) {
+                                            echo "Dapur";
+                                        } ?>
+                                    </td>
                                     <td><?php echo $row['telp']; ?></td>
                                     <td class="d-flex">
                                         <button class="btn btn-info btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalView<?php echo $row['id']; ?>"><i class="bi bi-eye"></i></button>
