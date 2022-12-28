@@ -55,8 +55,11 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="12345">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Password!
+                                    </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="082122223333" required>
@@ -88,15 +91,45 @@ while ($record = mysqli_fetch_array($query)) {
                 <div class="modal-dialog modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-eye"></i> Data User </h1>
+                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-eye"></i> Data User </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <form action="proses/proses_input_user.php" method="POST">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="nama" id="floatingInput" placeholder="Your Name">
+                                    <label for="floatingInput">Nama</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com">
+                                    <label for="floatingInput">Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" name="level" aria-label="Default select example">
+                                        <option selected hidden>Pilih level user</option>
+                                        <option value="1">Owner/Admin</option>
+                                        <option value="2">Kasir</option>
+                                        <option value="3">Pelayan</option>
+                                        <option value="3">Dapur</option>
+                                    </select>
+                                    <label for="floatingInput">Level</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="082122223333">
+                                    <label for="floatingInput">No Telp</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" name="alamat" id="floatingInput" cols="30" rows="10" style="height: 90px;"></textarea>
+                                    <label for="floatingInput">Alamat</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"><i class="bi bi-backspace"></i> Close</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
