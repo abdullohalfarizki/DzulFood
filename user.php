@@ -43,7 +43,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 </div>
                                 <div class="form-floating mb-3">
                                     <select class="form-select" name="level" aria-label="Default select example" required>
-                                        <option selected hidden>Pilih level user</option>
+                                        <option selected hidden value="">Pilih level user</option>
                                         <option value="1">Owner/Admin</option>
                                         <option value="2">Kasir</option>
                                         <option value="3">Pelayan</option>
@@ -55,8 +55,11 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="12345">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="" required>
                                     <label for="floatingPassword">Password</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Password!
+                                    </div>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="082122223333" required>
@@ -174,7 +177,7 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input required type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" value="<?php echo $row['username']; ?>">
+                                        <input <?php echo ($row['username'] == $_SESSION['username_dzulfood']) ? 'disabled' : ''; ?> required type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" value="<?php echo $row['username']; ?>">
                                         <label for="floatingInput">Username</label>
                                         <div class="invalid-feedback">
                                             Masukan Username!

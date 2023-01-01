@@ -11,16 +11,24 @@ $telp = (isset($_POST['telp'])) ? htmlentities($_POST['telp']) : "";
 $alamat = (isset($_POST['alamat'])) ? htmlentities($_POST['alamat']) : "";
 
 if (!empty($_POST['input_user_validate'])) {
-    $query = mysqli_query($conn, "INSERT INTO tb_user (nama, username, password, level, telp, alamat) VALUES ('$nama','$username','$password','$level','$telp','$alamat')");
-    if (!$query) {
+    $select = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'");
+    if (mysqli_num_rows($select) > 0) {
         $message = '<script>
-                        alert("Data User Gagal ditambahkan!");
+                        alert("Username Sudah Digunakan!");
+                        window.location = "../user";
                     </script>';
     } else {
-        $message = '<script>
+        $query = mysqli_query($conn, "INSERT INTO tb_user (nama, username, password, level, telp, alamat) VALUES ('$nama','$username','$password','$level','$telp','$alamat')");
+        if (!$query) {
+            $message = '<script>
+                        alert("Data User Gagal ditambahkan!");
+                    </script>';
+        } else {
+            $message = '<script>
                         alert("Data User Berhasil ditambahkan!");
                         window.location = "../user";
                     </script>';
+        }
     }
 }
 echo $message;
