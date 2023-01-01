@@ -24,7 +24,7 @@ if ($hasil) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 
-<body style="height: 3000px;">
+<body style="height: 900px;">
 
     <!-- Header -->
     <?php include "header.php" ?>

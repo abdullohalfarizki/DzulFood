@@ -76,7 +76,7 @@ if (!empty($_SESSION['username_dzulfood'])) {
 
 
     <!-- Custom styles for this template -->
-    <link href="assetss/css/loogin.css" rel="stylesheet">
+    <link href="assets/css/login.css" rel="stylesheet">
 </head>
 
 <body class="text-center">

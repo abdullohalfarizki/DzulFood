@@ -300,7 +300,7 @@ while ($record = mysqli_fetch_array($query)) {
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
-                            <tr>
+                            <tr class="text-nowrap">
                                 <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Username</th>
