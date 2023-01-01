@@ -28,9 +28,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+                <form class="needs-validation" novalidate action="proses/proses_ubah_password.php" method="POST">
                     <div class="form-floating mb-3">
-                        <input disabled type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" value="<?php echo $_SESSION['username_dzulfood']; ?>">
+                        <input disabled type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" value="<?php echo $_SESSION['username_dzulfood'] ?>">
                         <label for="floatingInput">Username</label>
                         <div class="invalid-feedback">
                             Masukan Username!
@@ -60,7 +60,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" name="input_edit_validate" value="12345" class="btn btn-primary btn-sm">Save changes</button>
+                        <button type="submit" name="validate_ubah_password" value="12345" class="btn btn-primary btn-sm">Save changes</button>
                     </div>
                 </form>
             </div>
