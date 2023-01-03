@@ -5,7 +5,11 @@ $query = mysqli_query($conn, "SELECT * FROM tb_daftar_menu
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
+
+$select_kat_menu = mysqli_query($conn, "SELECT kategori_menu FROM tb_kategori_menu");
 ?>
+
+
 
 <div class="col-lg-9 mt-2">
     <div class="card">
@@ -15,77 +19,84 @@ while ($record = mysqli_fetch_array($query)) {
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col d-flex justify-content-end me-2">
-                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahUser"><i class="bi bi-plus-lg"></i> Tambah</a>
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahMenu"><i class="bi bi-plus-lg"></i> Tambah Menu</a>
                 </div>
             </div>
-            <!-- Modal Tambah Data User-->
-            <div class="modal fade" id="ModalTambahUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen-md-down">
+            <!-- Modal Tambah Data Menu-->
+            <div class="modal fade" id="ModalTambahMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-plus"></i> Tambah User </h1>
+                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-plus"></i> Tambah Menu Makanan dan Minuman </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="nama" id="floatingInput" placeholder="Your Name" required>
-                                    <label for="floatingInput">Nama</label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="foto" id="uploadFoto" placeholder="Upload Foto Menu Makanan dan Minuman" required>
+                                    <label class="input-group-text" for="uploadFoto">Upload Foto Menu</label>
                                     <div class="invalid-feedback">
-                                        Masukan Nama!
+                                        Masukan Foto Menu !
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" name="username" id="floatingInput" placeholder="name@example.com" required>
-                                    <label for="floatingInput">Username</label>
+                                    <input type="text" class="form-control" name="nama_menu" id="floatingInput" placeholder="" required>
+                                    <label for="floatingInput">Nama Menu</label>
                                     <div class="invalid-feedback">
-                                        Masukan Username!
+                                        Masukan Nama Menu!
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="level" aria-label="Default select example" required>
-                                        <option selected hidden value="">Pilih level user</option>
-                                        <option value="1">Owner/Admin</option>
-                                        <option value="2">Kasir</option>
-                                        <option value="3">Pelayan</option>
-                                        <option value="3">Dapur</option>
+                                    <textarea class="form-control" name="keterangan" id="floatingInput" cols="30" rows="10" style="height: 80px;" required></textarea>
+                                    <label for="floatingInput">Keterangan</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Keterangan!
+                                    </div>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" name="ket_menu" aria-label="Default select example" required>
+                                        <option selected hidden value="">Pilih Kategori Menu</option>
+                                        <?php
+                                        foreach ($select_kat_menu as $value) {
+                                            echo "<option value=" . $value['kategori_menu'] . ">$value[kategori_menu]</option>";
+                                        }
+                                        ?>
                                     </select>
-                                    <label for="floatingInput">Level</label>
+                                    <label for="floatingInput">Kategori Makanan atau Minuman</label>
                                     <div class="invalid-feedback">
-                                        Pilih Level User!
+                                        Pilih Kategori Makanan atau Minuman!
                                     </div>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" value="" required>
-                                    <label for="floatingPassword">Password</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Password!
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" name="harga" class="form-control" id="floatingInput" placeholder="Password" value="" required>
+                                            <label for="floatingInput">Harga</label>
+                                            <div class="invalid-feedback">
+                                                Masukan Harga Menu!
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="number" name="telp" class="form-control" id="floatingInput" placeholder="082122223333" required>
-                                    <label for="floatingInput">No Telp</label>
-                                    <div class="invalid-feedback">
-                                        Masukan No Telpon!
-                                    </div>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" name="alamat" id="floatingInput" cols="30" rows="10" style="height: 90px;" required></textarea>
-                                    <label for="floatingInput">Alamat</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Alamat!
+                                    <div class="col-lg-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="number" name="stok" class="form-control" id="floatingInput" placeholder="120" required>
+                                            <label for="floatingInput">Stok</label>
+                                            <div class="invalid-feedback">
+                                                Masukan Stok Menu!
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="input_user_validate" value="12345" class="btn btn-primary btn-sm">Save changes</button>
+                                    <button type="submit" name="input_menu_validate" value="12345" class="btn btn-primary btn-sm">Tambahkan Menu</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Akhir Modal Tambah Data User -->
+            <!-- Akhir Modal Tambah Data Menu -->
 
             <?php
             foreach ($result as $row) {
