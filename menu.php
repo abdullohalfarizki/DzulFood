@@ -6,7 +6,7 @@ while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
 
-$select_kat_menu = mysqli_query($conn, "SELECT kategori_menu FROM tb_kategori_menu");
+$select_kat_menu = mysqli_query($conn, "SELECT id,kategori_menu FROM tb_kategori_menu");
 ?>
 
 
@@ -31,7 +31,7 @@ $select_kat_menu = mysqli_query($conn, "SELECT kategori_menu FROM tb_kategori_me
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_user.php" method="POST">
+                            <form class="needs-validation" novalidate action="proses/proses_input_menu.php" method="POST" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
                                     <input type="file" class="form-control" name="foto" id="uploadFoto" placeholder="Upload Foto Menu Makanan dan Minuman" required>
                                     <label class="input-group-text" for="uploadFoto">Upload Foto Menu</label>
@@ -54,11 +54,11 @@ $select_kat_menu = mysqli_query($conn, "SELECT kategori_menu FROM tb_kategori_me
                                     </div>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" name="ket_menu" aria-label="Default select example" required>
+                                    <select class="form-select" name="kategori_menu" aria-label="Default select example" required>
                                         <option selected hidden value="">Pilih Kategori Menu</option>
                                         <?php
                                         foreach ($select_kat_menu as $value) {
-                                            echo "<option value=" . $value['kategori_menu'] . ">$value[kategori_menu]</option>";
+                                            echo "<option value=" . $value['id'] . ">$value[kategori_menu]</option>";
                                         }
                                         ?>
                                     </select>
