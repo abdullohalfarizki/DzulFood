@@ -1,6 +1,7 @@
 <?php
 include "proses/connect.php";
-$query = mysqli_query($conn, "SELECT * FROM tb_daftar_menu");
+$query = mysqli_query($conn, "SELECT * FROM tb_daftar_menu
+    LEFT JOIN tb_kategori_menu ON tb_kategori_menu.id = tb_daftar_menu.kategori ");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -305,6 +306,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <th scope="col">Foto Menu</th>
                                 <th scope="col">Nama menu</th>
                                 <th scope="col">Keterangan</th>
+                                <th scope="col">Jenis Menu</th>
                                 <th scope="col">kategori</th>
                                 <th scope="col">Harga</th>
                                 <th scope="col">Stok</th>
@@ -325,7 +327,8 @@ while ($record = mysqli_fetch_array($query)) {
                                     </td>
                                     <td><?php echo $row['nama_menu']; ?></td>
                                     <td><?php echo $row['keterangan']; ?></td>
-                                    <td><?php echo $row['kategori']; ?></td>
+                                    <td><?php echo ($row['jenis_menu'] == 1) ? "Makanan" : "Minuman"; ?></td>
+                                    <td><?php echo $row['kategori_menu']; ?></td>
                                     <td>Rp. <?php echo number_format($row['harga']); ?></td>
                                     <td><?php echo $row['stok']; ?></td>
                                     <td class="">
