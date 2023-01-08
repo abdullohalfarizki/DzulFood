@@ -21,6 +21,7 @@ if (!empty($_POST['input_edit_validate'])) {
     } else {
         $message =  '<script>
                     alert("Data User Gagal diupdate!");
+                    window.location = "../user";
                 </script>';
     }
 }

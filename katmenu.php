@@ -69,7 +69,8 @@ while ($record = mysqli_fetch_array($query)) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" novalidate action="proses/proses_input_katmenu.php" method="POST">
+                                <form class="needs-validation" novalidate action="proses/proses_edit_katmenu.php" method="POST">
+                                    <input type="hidden" value="<?php echo $row['id_kat_menu'] ?>" name="id">
                                     <div class="form-floating mb-3">
                                         <select name="jenismenu" id="jenismenu" class="form-select" aria-label="Default Select Example">
                                             <?php
@@ -97,7 +98,7 @@ while ($record = mysqli_fetch_array($query)) {
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Keluar</button>
-                                        <button type="submit" name="input_katmenu_validate" value="12345" class="btn btn-primary btn-sm">Simpan</button>
+                                        <button type="submit" name="edit_katmenu_validate" value="12345" class="btn btn-primary btn-sm">Simpan</button>
                                     </div>
                                 </form>
                             </div>
