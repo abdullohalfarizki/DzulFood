@@ -8,6 +8,9 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
 } else if (isset($_GET['x']) && $_GET['x'] == 'menu') {
     $page = "menu.php";
     include "main.php";
+} else if (isset($_GET['x']) && $_GET['x'] == 'katmenu') {
+    $page = "katmenu.php";
+    include "main.php";
 } else if (isset($_GET['x']) && $_GET['x'] == 'order') {
     $page = "order.php";
     include "main.php";
