@@ -24,14 +24,14 @@ if ($hasil) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 </head>
 
-<body style="height: 900px;">
+<body>
 
     <!-- Header -->
     <?php include "header.php" ?>
     <!-- End Header -->
 
     <div class="container-lg">
-        <div class="row">
+        <div class="row mb-5">
             <!-- Sidebar -->
             <?php include "sidebar.php" ?>
             <!-- End Sidebar -->

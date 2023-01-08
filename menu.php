@@ -266,6 +266,7 @@ $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb
                             <div class="modal-body">
                                 <form class="needs-validation" novalidate action="proses/proses_hapus_menu.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                    <input type="hidden" name="foto" value="<?php echo $row['foto']; ?>">
                                     <div class="col lg-12 text-center mb-3">
                                         Apakah anda ingin menghapus menu <b><?php echo $row['nama_menu'] ?></b>
                                     </div>
@@ -280,36 +281,6 @@ $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb
                 </div>
                 <!-- Akhir Modal Hapus-->
 
-                <!-- Modal Reset Password-->
-                <div class="modal fade" id="ModalResetPassword<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-fullscreen-md-down">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-key"></i> Reset Password </h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form class="needs-validation" novalidate action="proses/proses_reset_password.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                    <div class="col lg-12 text-center mb-3">
-                                        <?php
-                                        if ($row['username'] == $_SESSION['username_dzulfood']) {
-                                            echo '<div class="alert alert-danger">Anda tidak dapat mereset password sendiri</div>';
-                                        } else {
-                                            echo "Apakah anda yakin ingin mereset password user <b>$row[username]</b> menjadi password bawaan sistem yaitu <b>12345</b>";
-                                        }
-                                        ?>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" name="reset_password_validate" value="12345" class="btn btn-success btn-sm" <?php echo ($row['username'] == $_SESSION['username_dzulfood']) ? 'disabled' : ''; ?>>Reset Password</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Akhir Modal Reset Password-->
             <?php
             }
             if (empty($result)) {
