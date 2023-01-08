@@ -119,7 +119,7 @@ while ($record = mysqli_fetch_array($query)) {
                                 <form class="needs-validation" novalidate action="proses/proses_hapus_katmenu.php" method="POST">
                                     <input type="hidden" name="id" value="<?php echo $row['id_kat_menu']; ?>">
                                     <div class="col lg-12 text-center mb-3">
-                                        Apakah anda ingin mmenghapus kategori <b><?= $row['kategori_menu'] ?></b>
+                                        Apakah anda ingin menghapus kategori <b><?= $row['kategori_menu'] ?></b>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
