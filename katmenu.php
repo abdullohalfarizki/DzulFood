@@ -108,28 +108,22 @@ while ($record = mysqli_fetch_array($query)) {
                 <!-- Akhir Modal Edit Kategori Baru -->
 
                 <!-- Modal Hapus Kategori Baru -->
-                <div class="modal fade" id="ModalHapus<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ModalHapus<?php echo $row['id_kat_menu']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-fullscreen-md-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-trash"></i> Hapus Data User </h1>
+                                <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-trash"></i> Hapus Data Kategori Menu </h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form class="needs-validation" novalidate action="proses/proses_hapus_user.php" method="POST">
-                                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <form class="needs-validation" novalidate action="proses/proses_hapus_katmenu.php" method="POST">
+                                    <input type="hidden" name="id" value="<?php echo $row['id_kat_menu']; ?>">
                                     <div class="col lg-12 text-center mb-3">
-                                        <?php
-                                        if ($row['username'] == $_SESSION['username_dzulfood']) {
-                                            echo '<div class="alert alert-danger">Anda tidak dapat menghapus akun sendiri</div>';
-                                        } else {
-                                            echo "Apakah anda yakin ingin menghapus user <b>$row[username]</b>";
-                                        }
-                                        ?>
+                                        Apakah anda ingin mmenghapus kategori <b><?= $row['kategori_menu'] ?></b>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" name="input_hapus_validate" value="12345" class="btn btn-danger btn-sm" <?php echo ($row['username'] == $_SESSION['username_dzulfood']) ? 'disabled' : ''; ?>>Hapus</button>
+                                        <button type="submit" name="hapus_kategori_validate" value="12345" class="btn btn-danger btn-sm">Hapus</button>
                                     </div>
                                 </form>
                             </div>
