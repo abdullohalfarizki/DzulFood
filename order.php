@@ -206,7 +206,9 @@ while ($record = mysqli_fetch_array($query)) {
                                     <td><?php echo $row['id_order']; ?></td>
                                     <td><?php echo $row['pelanggan']; ?></td>
                                     <td><?php echo $row['meja']; ?></td>
-                                    <td><?php echo number_format((int)$row['harganya'], 0,); ?></td>
+                                    <td class="text-nowrap">
+                                        Rp. <?php echo number_format((int)$row['harganya'], 0,); ?>
+                                    </td>
                                     <td><?php echo $row['nama']; ?></td>
                                     <td><?php echo $row['status']; ?></td>
                                     <td><?php echo $row['waktu_order']; ?></td>
