@@ -3,10 +3,10 @@ include "proses/connect.php";
 
 $query = mysqli_query($conn, "SELECT *, SUM(harga*jumlah) AS harganya FROM tb_list_order
 
-        LEFT JOIN tb_order ON  tb_order.id_order = tb_list_order.order
+        LEFT JOIN tb_order ON  tb_order.id_order = tb_list_order.kode_order
         LEFT JOIN tb_daftar_menu ON  tb_daftar_menu.id = tb_list_order.menu
         GROUP BY id_list_order
-        HAVING tb_list_order.order = $_GET[order] ");
+        HAVING tb_list_order.kode_order = $_GET[order] ");
 
 $kode = $_GET['order'];
 $meja = $_GET['meja'];
@@ -30,6 +30,7 @@ while ($record = mysqli_fetch_array($query)) {
             Halaman Order Item
         </div>
         <div class="card-body">
+            <a href="order" class="btn btn-secondary btn-sm mb-3"><i class="bi bi-arrow-left"></i></a>
             <div class="row">
                 <div class="col-lg-3">
                     <div class="form-floating mb-3">
@@ -129,7 +130,7 @@ while ($record = mysqli_fetch_array($query)) {
 
             <?php
             if (empty($result)) {
-                echo "Data Order Item Tidak Ada!";
+                echo "Tidak Ada Data Order Item!";
             } else {
                 foreach ($result as $row) {
             ?>
