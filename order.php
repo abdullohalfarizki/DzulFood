@@ -1,9 +1,7 @@
 <?php
 include "proses/connect.php";
 
-// $query = mysqli_query($conn, "SELECT * FROM tb_order
-//         LEFT JOIN tb_user ON tb_user.id = tb_order.pelayan ");
-
+date_default_timezone_set("Asia/Jakarta");
 $query = mysqli_query($conn, "SELECT tb_order.*,nama, SUM(harga*jumlah) AS harganya FROM tb_order
         LEFT JOIN tb_user ON tb_user.id = tb_order.pelayan 
         LEFT JOIN tb_list_order ON  tb_list_order.order = tb_order.id_order
@@ -16,102 +14,84 @@ while ($record = mysqli_fetch_array($query)) {
 // $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb_kategori_menu");
 ?>
 
-
-
 <div class="col-lg-9 mt-2">
     <div class="card">
         <div class="card-header">
-            Daftar Menu
+            Daftar Order Menu
         </div>
         <div class="card-body">
             <div class="row mb-2">
                 <div class="col d-flex justify-content-end me-2">
-                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahMenu"><i class="bi bi-plus-lg"></i> Tambah Menu</a>
+                    <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#ModalTambahMenu"><i class="bi bi-plus-lg"></i> Tambah Order</a>
                 </div>
             </div>
-            <!-- Modal Tambah Data Menu-->
+            <!-- Modal Tambah Order Baru-->
             <div class="modal fade" id="ModalTambahMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-plus"></i> Tambah Menu Makanan dan Minuman </h1>
+                            <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-plus-circle"></i> Order Makanan dan Minuman </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="needs-validation" novalidate action="proses/proses_input_menu.php" method="POST" enctype="multipart/form-data">
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" name="foto" id="uploadFoto" placeholder="Upload Foto Menu Makanan dan Minuman" required>
-                                    <label class="input-group-text" for="uploadFoto">Upload Foto Menu</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Foto Menu !
-                                    </div>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="nama_menu" id="floatingInput" placeholder="" required>
-                                    <label for="floatingInput">Nama Menu</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Nama Menu!
-                                    </div>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" name="keterangan" id="floatingInput" cols="30" rows="10" style="height: 80px;" required></textarea>
-                                    <label for="floatingInput">Keterangan</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Keterangan!
-                                    </div>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" name="kategori_menu" aria-label="Default select example" required>
-                                        <option selected hidden value="">Pilih Kategori Menu</option>
-                                        <?php
-                                        foreach ($select_kat_menu as $value) {
-                                            echo "<option value=" . $value['id_kat_menu'] . ">$value[kategori_menu]</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                    <label for="floatingInput">Kategori Makanan atau Minuman</label>
-                                    <div class="invalid-feedback">
-                                        Pilih Kategori Makanan atau Minuman!
-                                    </div>
-                                </div>
+                            <form class="needs-validation" novalidate action="proses/proses_input_order.php" method="POST">
+
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-floating mb-3">
-                                            <input type="number" name="harga" class="form-control" id="floatingInput" placeholder="Password" value="" required>
-                                            <label for="floatingInput">Harga</label>
+                                            <input type="text" name="kode_order" class="form-control" id="kodeOrder" value="<?= date("ymdHi") . rand(100, 999) ?>" readonly>
+                                            <label for="kodeOrder">Kode Order</label>
                                             <div class="invalid-feedback">
-                                                Masukan Harga Menu!
+                                                Masukan Kode Order!
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-3">
                                         <div class="form-floating mb-3">
-                                            <input type="number" name="stok" class="form-control" id="floatingInput" placeholder="120" required>
-                                            <label for="floatingInput">Stok</label>
+                                            <input type="number" name="meja" value="" class="form-control" id="floatingInput" required>
+                                            <label for="floatingInput">Meja</label>
                                             <div class="invalid-feedback">
-                                                Masukan Stok Menu!
+                                                Masukan No Meja!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" name="pelanggan" value="" class="form-control" id="floatingInput" required>
+                                            <label for="floatingInput">Pelanggan</label>
+                                            <div class="invalid-feedback">
+                                                Masukan Nama Pelanggan!
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="catatan" id="floatingInput" placeholder="" required>
+                                    <label for="floatingInput">Catatan</label>
+                                    <div class="invalid-feedback">
+                                        Masukan Catatan!
+                                    </div>
+                                </div>
+
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="input_menu_validate" value="12345" class="btn btn-primary btn-sm">Tambahkan Menu</button>
+                                    <button type="submit" name="input_order_validate" value="12345" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Buat Order</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Akhir Modal Tambah Data Menu -->
+            <!-- Akhir Modal Tambah Order Baru -->
 
             <?php
             if (empty($result)) {
-                echo "Data Menu Makanan dan Minuman Tidak Ada!";
+                echo "Tidak Ada Data Daftar Order Menu Makanan dan Minuman!";
             } else {
                 foreach ($result as $row) {
             ?>
-                    <!-- Modal View Menu -->
+                    <!-- Modal View Order  -->
                     <div class="modal fade" id="ModalView<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                             <div class="modal-content">
@@ -182,9 +162,9 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                         </div>
                     </div>
-                    <!-- Akhir Modal View Menu-->
+                    <!-- Akhir Modal View Order-->
 
-                    <!-- Modal Edit Menu -->
+                    <!-- Modal Edit Order -->
                     <div class="modal fade" id="ModalEdit<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                             <div class="modal-content">
@@ -263,7 +243,7 @@ while ($record = mysqli_fetch_array($query)) {
                             </div>
                         </div>
                     </div>
-                    <!-- Akhir Modal Edit Menu-->
+                    <!-- Akhir Modal Edit Order-->
 
                     <!-- Modal Hapus -->
                     <div class="modal fade" id="ModalHapus<?php echo $row['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -317,7 +297,7 @@ while ($record = mysqli_fetch_array($query)) {
                             ?>
                                 <tr>
                                     <th scope="row"><?php echo $no++; ?></th>
-                                    <td><?php echo $row['kode_order']; ?></td>
+                                    <td><?php echo $row['id_order']; ?></td>
                                     <td><?php echo $row['pelanggan']; ?></td>
                                     <td><?php echo $row['meja']; ?></td>
                                     <td><?php echo $row['harganya']; ?></td>

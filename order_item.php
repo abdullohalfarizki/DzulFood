@@ -8,11 +8,15 @@ $query = mysqli_query($conn, "SELECT *, SUM(harga*jumlah) AS harganya FROM tb_li
         GROUP BY id_list_order
         HAVING tb_list_order.order = $_GET[order] ");
 
+$kode = $_GET['order'];
+$meja = $_GET['meja'];
+$pelanggan = $_GET['pelanggan'];
+
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
-    $kode = $record['kode_order'];
-    $meja = $record['meja'];
-    $pelanggan = $record['pelanggan'];
+    // $kode = $record['id_order'];
+    // $meja = $record['meja'];
+    // $pelanggan = $record['pelanggan'];
 }
 
 // $select_kat_menu = mysqli_query($conn, "SELECT id_kat_menu,kategori_menu FROM tb_kategori_menu");
@@ -33,13 +37,13 @@ while ($record = mysqli_fetch_array($query)) {
                         <label for="kodeOrder">Kode Order</label>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-2">
                     <div class="form-floating mb-3">
                         <input disabled type="text" value="<?= $meja; ?>" class="form-control" id="floatingInput">
                         <label for="floatingInput">Meja</label>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="form-floating mb-3">
                         <input disabled type="text" value="<?= $pelanggan; ?>" class="form-control" id="floatingInput">
                         <label for="floatingInput">Pelanggan</label>
@@ -47,8 +51,8 @@ while ($record = mysqli_fetch_array($query)) {
                 </div>
             </div>
 
-            <!-- Modal Tambah Data Menu-->
-            <div class="modal fade" id="ModalTambahMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal Tambah Item-->
+            <div class="modal fade" id="tambahItem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-fullscreen-md-down">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -121,7 +125,7 @@ while ($record = mysqli_fetch_array($query)) {
                     </div>
                 </div>
             </div>
-            <!-- Akhir Modal Tambah Data Menu -->
+            <!-- Akhir Modal Tambah Item -->
 
             <?php
             if (empty($result)) {
@@ -357,13 +361,14 @@ while ($record = mysqli_fetch_array($query)) {
                             </tr>
                         </tbody>
                     </table>
-                    <!-- tombol -->
-                    <div class="mb-3">
-                        <button class="btn btn-primary"><i class="bi bi-plus-circle"></i> Item</button>
-                        <button class="btn btn-success"><i class="bi bi-cash-coin"></i> Bayar</button>
-                    </div>
                 </div>
             <?php } ?>
+            <!-- tombol -->
+            <div class="mb-3">
+                <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#tambahItem"><i class="bi bi-plus-circle"></i> Item</button>
+
+                <button class="btn btn-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#bayar"><i class="bi bi-cash-coin"></i> Bayar</button>
+            </div>
         </div>
     </div>
 </div>
