@@ -183,19 +183,21 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                         <div class="modal-dialog modal-fullscreen-md-down">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-trash"></i> Hapus Data Menu </h1>
+                                    <h1 class="modal-title fs-6" id="exampleModalLabel"><i class="bi bi-trash"></i> Hapus Item Menu </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" novalidate action="proses/proses_hapus_menu.php" method="POST">
-                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-                                        <input type="hidden" name="foto" value="<?php echo $row['foto']; ?>">
+                                    <form class="needs-validation" novalidate action="proses/proses_hapus_orderitem.php" method="POST">
+                                        <input type="hidden" name="id" value="<?php echo $row['id_list_order']; ?>">
+                                        <input type="hidden" name="kode_order" value="<?= $kode; ?>">
+                                        <input type="hidden" name="meja" value="<?= $meja; ?>">
+                                        <input type="hidden" name="pelanggan" value="<?= $pelanggan; ?>">
                                         <div class="col lg-12 text-center mb-3">
                                             Apakah anda ingin menghapus menu <b><?php echo $row['nama_menu'] ?></b>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" name="input_hapus_validate" value="12345" class="btn btn-danger btn-sm">Hapus</button>
+                                            <button type="submit" name="hapus_orderitem_validate" value="12345" class="btn btn-danger btn-sm">Hapus</button>
                                         </div>
                                     </form>
                                 </div>
