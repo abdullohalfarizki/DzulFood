@@ -65,15 +65,6 @@ while ($record = mysqli_fetch_array($query)) {
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" name="catatan" id="floatingInput" placeholder="" required>
-                                    <label for="floatingInput">Catatan</label>
-                                    <div class="invalid-feedback">
-                                        Masukan Catatan!
-                                    </div>
-                                </div>
-
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                                     <button type="submit" name="input_order_validate" value="12345" class="btn btn-primary btn-sm"><i class="bi bi-plus-circle"></i> Buat Order</button>
@@ -132,15 +123,6 @@ while ($record = mysqli_fetch_array($query)) {
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-floating mb-3">
-                                            <input type="text" class="form-control" name="catatan" id="floatingInput" value="<?= $row['catatan']; ?>" required>
-                                            <label for="floatingInput">Catatan</label>
-                                            <div class="invalid-feedback">
-                                                Masukan Catatan!
-                                            </div>
-                                        </div>
-
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" name="edit_order_validate" value="12345" class="btn btn-primary btn-sm">Simpan</button>

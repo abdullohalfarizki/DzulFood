@@ -6,7 +6,6 @@ include "connect.php";
 $kode_order = (isset($_POST['kode_order'])) ? htmlentities($_POST['kode_order']) : "";
 $meja = (isset($_POST['meja'])) ? htmlentities($_POST['meja']) : "";
 $pelanggan = (isset($_POST['pelanggan'])) ? htmlentities($_POST['pelanggan'])  : "";
-$catatan = (isset($_POST['catatan'])) ? htmlentities($_POST['catatan']) : "";
 
 if (!empty($_POST['input_order_validate'])) {
     //pengecekan id_order/kode order ke database 
@@ -17,7 +16,7 @@ if (!empty($_POST['input_order_validate'])) {
                         window.location = "../order";
                     </script>';
     } else {
-        $query = mysqli_query($conn, "INSERT INTO tb_order (id_order, meja, pelanggan, catatan, pelayan) VALUES ('$kode_order','$meja','$pelanggan','$catatan','$_SESSION[id_dzulfood]')");
+        $query = mysqli_query($conn, "INSERT INTO tb_order (id_order, meja, pelanggan, pelayan) VALUES ('$kode_order','$meja','$pelanggan','$_SESSION[id_dzulfood]')");
         if (!$query) {
             $message = '<script>
                         alert("Data User Gagal ditambahkan!");
