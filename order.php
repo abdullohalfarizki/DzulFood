@@ -2,11 +2,12 @@
 include "proses/connect.php";
 
 date_default_timezone_set("Asia/Jakarta");
-$query = mysqli_query($conn, "SELECT tb_order.*,nama, SUM(harga*jumlah) AS harganya FROM tb_order
+$query = mysqli_query($conn, "SELECT tb_order.*,tb_bayar.*,nama, SUM(harga*jumlah) AS harganya FROM tb_order
         LEFT JOIN tb_user ON tb_user.id = tb_order.pelayan 
         LEFT JOIN tb_list_order ON  tb_list_order.kode_order = tb_order.id_order
         LEFT JOIN tb_daftar_menu ON  tb_daftar_menu.id = tb_list_order.menu
-        GROUP BY id_order");
+        LEFT JOIN tb_bayar ON  tb_bayar.id_bayar = tb_order.id_order 
+        GROUP BY id_order ORDER BY waktu_order DESC");
 while ($record = mysqli_fetch_array($query)) {
     $result[] = $record;
 }
@@ -192,15 +193,15 @@ while ($record = mysqli_fetch_array($query)) {
                                         Rp. <?php echo number_format((int)$row['harganya'], 0,); ?>
                                     </td>
                                     <td><?php echo $row['nama']; ?></td>
-                                    <td><?php echo $row['status']; ?></td>
+                                    <td><?php echo (!empty($row['id_bayar'])) ? "<span class='badge text-bg-success'>dibayar</span>" : "<span class='badge text-bg-danger'>Belum</span>"; ?></td>
                                     <td><?php echo $row['waktu_order']; ?></td>
                                     <td class="">
                                         <div class="row">
                                             <div class="col d-flex">
                                                 <a class="btn btn-info btn-sm me-1" href="./?x=orderitem&order=<?php echo $row['id_order'] . "&meja=" . $row['meja'] . "&pelanggan=" . $row['pelanggan']; ?>"><i class="bi bi-eye"></i></a>
 
-                                                <button class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_order']; ?>"><i class="bi bi-pencil-square"></i></button>
-                                                <button class="btn btn-danger btn-sm me-1" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id_order']; ?>"><i class="bi bi-trash"></i></button>
+                                                <button class="<?= (!empty($row['id_bayar'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-warning btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#ModalEdit<?php echo $row['id_order']; ?>"><i class="bi bi-pencil-square"></i></button>
+                                                <button class="<?= (!empty($row['id_bayar'])) ? "btn btn-secondary btn-sm me-1 disabled" : "btn btn-danger btn-sm me-1"; ?>" data-bs-toggle="modal" data-bs-target="#ModalHapus<?php echo $row['id_order']; ?>"><i class="bi bi-trash"></i></button>
                                             </div>
                                         </div>
                                     </td>
