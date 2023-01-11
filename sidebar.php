@@ -24,7 +24,7 @@
                             <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'order') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="order"><i class="bi bi-cart-check"></i> Order</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'customer') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="customer"><i class="bi bi-people"></i> Customer</a>
+                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'dapur') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="dapur"><i class="bi bi-paint-bucket"></i> Dapur</a>
                         </li>
                         <?php if ($hasil['level'] == 1) { ?>
                             <li class="nav-item">

@@ -309,7 +309,16 @@ $select_menu = mysqli_query($conn, "SELECT id,nama_menu FROM tb_daftar_menu");
                                     <td><?php echo $row['nama_menu']; ?></td>
                                     <td>Rp. <?php echo number_format($row['harga']); ?></td>
                                     <td><?php echo $row['jumlah']; ?></td>
-                                    <td><?php echo (!empty($row['id_bayar'])) ? "<span class='badge text-bg-success'>dibayar</span>" : "<span class='badge text-bg-danger'>Belum</span>"; ?></td>
+                                    <td>
+                                        <?php echo (!empty($row['id_bayar'])) ? "<span class='badge text-bg-success'>dibayar</span>" : ""; ?>
+                                        <?php
+                                        if (!empty($row['status'] == 1)) {
+                                            echo "<span class='badge text-bg-warning'>proses</span>";
+                                        } elseif (!empty($row['status'] == 2)) {
+                                            echo "<span class='badge text-bg-success'>siap saji</span>";
+                                        }
+                                        ?>
+                                    </td>
                                     <td>Rp. <?php echo number_format($row['harganya']); ?></td>
                                     <td><?php echo $row['catatan']; ?></td>
                                     <td class="">

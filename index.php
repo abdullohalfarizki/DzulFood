@@ -17,8 +17,8 @@ if (isset($_GET['x']) && $_GET['x'] == 'home') {
 } else if (isset($_GET['x']) && $_GET['x'] == 'order') {
     $page = "order.php";
     include "main.php";
-} else if (isset($_GET['x']) && $_GET['x'] == 'customer') {
-    $page = "customer.php";
+} else if (isset($_GET['x']) && $_GET['x'] == 'dapur') {
+    $page = "dapur.php";
     include "main.php";
 } else if (isset($_GET['x']) && $_GET['x'] == 'user') {
     if ($_SESSION['level_dzulfood'] == 1) {

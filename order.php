@@ -193,7 +193,7 @@ while ($record = mysqli_fetch_array($query)) {
                                         Rp. <?php echo number_format((int)$row['harganya'], 0,); ?>
                                     </td>
                                     <td><?php echo $row['nama']; ?></td>
-                                    <td><?php echo (!empty($row['id_bayar'])) ? "<span class='badge text-bg-success'>dibayar</span>" : "<span class='badge text-bg-danger'>Belum</span>"; ?></td>
+                                    <td><?php echo (!empty($row['id_bayar'])) ? "<span class='badge text-bg-success'>dibayar</span>" : ""; ?></td>
                                     <td><?php echo $row['waktu_order']; ?></td>
                                     <td class="">
                                         <div class="row">
