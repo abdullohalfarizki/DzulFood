@@ -14,18 +14,30 @@
                         <li class="nav-item">
                             <a class="nav-link <?php echo ((isset($_GET['x']) && $_GET['x'] == 'home') || !isset($_GET['x'])) ? 'active link-light bg-info'  : 'link-dark'; ?>  ps-2" aria-current="page" href="home"><i class="bi bi-house"></i> Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'menu') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="menu"><i class="bi bi-card-checklist"></i> Daftar Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'katmenu') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="katmenu"><i class="bi bi-bookmark-check"></i> Kategori Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'order') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="order"><i class="bi bi-cart-check"></i> Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'dapur') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="dapur"><i class="bi bi-paint-bucket"></i> Dapur</a>
-                        </li>
+
+                        <?php if ($hasil['level'] == 1 || $hasil['level'] == 2 || $hasil['level'] == 3) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'menu') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="menu"><i class="bi bi-card-checklist"></i> Daftar Menu</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ($hasil['level'] == 1) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'katmenu') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="katmenu"><i class="bi bi-bookmark-check"></i> Kategori Menu</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ($hasil['level'] == 1 || $hasil['level'] == 2 || $hasil['level'] == 3) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'order') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="order"><i class="bi bi-cart-check"></i> Order</a>
+                            </li>
+                        <?php } ?>
+
+                        <?php if ($hasil['level'] == 1 || $hasil['level'] == 4) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'dapur') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="dapur"><i class="bi bi-paint-bucket"></i> Dapur</a>
+                            </li>
+                        <?php } ?>
                         <?php if ($hasil['level'] == 1) { ?>
                             <li class="nav-item">
                                 <a class="nav-link <?php echo (isset($_GET['x']) && $_GET['x'] == 'user') ? 'active link-light bg-info'  : 'link-dark'; ?> ps-2" href="user"><i class="bi bi-person-fill-check"></i> User</a>

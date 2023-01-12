@@ -51,5 +51,4 @@ DzulFood merupakan sebuah aplikasi yang dapat digunakan untuk pemesanan minuman 
 
     - Pesanan
 
-................................................................
 PHP + Bootsrap 5
